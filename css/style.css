@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
+:root {
+    --clr-neon: linear-gradient(to right, orange, #ff0000d1, #fac52cd4, #009802db, #680081, #ff0000d1, orange);
+    --clr-bg: #001414;
+    --font-size: 200%;
+}
+
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: "Monument", "Balsamiq Sans", sans-serif, arial;
+    overflow: hidden;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.neon {
+    margin-top: -37%;
+    margin-left: -10%;
+    font-size: var(--font-size);
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: #ffac00 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 0.25em;
+    text-shadow: 0 0 .20em #FFF7, 0 0 .30em #14f2ff;
+    box-shadow: inset 0 0 .5em var(--clr-neon), 0 0 .5em var(--clr-neon);
+}
+
+.neon::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--clr-neon);
+    transform: perspective(0.2em) rotateX(-10deg) scale(1.3, 0.40);
+    filter: blur(0.5em);
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 100ms linear;
+}
+
+.neon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--clr-neon);
+    box-shadow: 0 0 2em var(--clr-neon);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 100ms linear;
+}
+
+.neon:hover::after {
+    opacity: 1;
+}
+
+.neon:hover,
+.neon:focus {
+    color: white;
+}
+
+.neon:hover::before {
+    opacity: 0.8;
+}
+
+.vid-bg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -3;
+}
+
+.container {
+    width: 1000px;
+    margin-left: 70%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container .card {
+    position: relative;
+}
+
+.container .card .face {
+    width: 300px;
+    height: 200px;
+    transition: .4s;
+}
+
+.container .card .face.face1 {
+    position: relative;
+    background: linear-gradient(rgb(55, 0, 255), rgb(157, 26, 157), rgb(245, 82, 172), pink);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    z-index: 1;
+    transform: translateY(100px);
+}
+
+.container .card:hover .face.face1 {
+    transform: translateY(0);
+    box-shadow: inset 0 0 60px whitesmoke, inset 20px 0 80px #f0f, inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff, 0 0 50px #fff, -10px 0 80px #f0f, 10px 0 80px #0ff;
+}
+
+.container .card .face.face1 .content {
+    opacity: .2;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.container .card:hover .face.face1 .content {
+    opacity: 1;
+}
+
+.container .card .face.face1 .content i {
+    font-size: 3em;
+    color: white;
+    display: inline-block;
+}
+
+.container .card .face.face1 .content h3 {
+    font-size: 2em;
+    color: black;
+    text-align: center;
+}
+
+.container .card .face.face1 .content a {
+    transition: .5s;
+}
+
+.container .card .face.face2 {
+    position: relative;
+    background: linear-gradient(pink, rgb(245, 82, 172), rgb(157, 26, 157), rgb(55, 0, 255));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .8);
+    transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2 {
+    transform: translateY(0);
+}
+
+.container .card .face.face2 .content p,
+a {
+    font-size: 20pt;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container .card .face.face2 .content a {
+    text-decoration: none;
+    color: black;
+    box-sizing: border-box;
+    outline: 1px dashed #333;
+    padding: 10px;
+    margin: 15px 0 0;
+    display: inline-block;
+}
+
+.container .card .face.face2 .content a:hover {
+    background: #333;
+    color: whitesmoke;
+    box-shadow: inset 0px 0px 10px rgba(95, 118, 232, 0.5);
+}
+
+.glitch {
+    color: black;
+    border-radius: 10%;
+    font-size: 100px;
+    position: relative;
+    margin-right: -40%;
+}
+
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 10px;
+    text-shadow: -3px 0 red;
+    top: 0;
+    color: antiquewhite;
+    background-color: transparent;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: animate-glitch 3s infinite linear alternate-reverse;
+}
+
+.glitch::before {
+    content: attr(data-text);
+    position: absolute;
+    left: -10px;
+    text-shadow: 3px 0 rgb(0, 255, 38);
+    top: 0;
+    color: antiquewhite;
+    background-color: transparent;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: animate-glitch 2s infinite linear alternate-reverse;
+}
+
+@keyframes animate-glitch {
+    0% {
+        clip: rect(99px, 9999px, 45px, 0);
+    }
+    5% {
+        clip: rect(7px, 9999px, 49px, 0);
+    }
+    10% {
+        clip: rect(52px, 9999px, 79px, 0);
+    }
+    15% {
+        clip: rect(51px, 9999px, 42px, 0);
+    }
+    20% {
+        clip: rect(37px, 9999px, 43px, 0);
+    }
+    25% {
+        clip: rect(38px, 9999px, 9px, 0);
+    }
+    30% {
+        clip: rect(34px, 9999px, 93px, 0);
+    }
+    35% {
+        clip: rect(18px, 9999px, 84px, 0);
+    }
+    40% {
+        clip: rect(100px, 9999px, 75px, 0);
+    }
+    45% {
+        clip: rect(15px, 9999px, 4px, 0);
+    }
+    50% {
+        clip: rect(14px, 9999px, 10px, 0);
+    }
+    55% {
+        clip: rect(4px, 9999px, 75px, 0);
+    }
+    60% {
+        clip: rect(17px, 9999px, 55px, 0);
+    }
+    65% {
+        clip: rect(75px, 9999px, 57px, 0);
+    }
+    70% {
+        clip: rect(39px, 9999px, 84px, 0);
+    }
+    75% {
+        clip: rect(96px, 9999px, 54px, 0);
+    }
+    80% {
+        clip: rect(45px, 9999px, 25px, 0);
+    }
+    85% {
+        clip: rect(60px, 9999px, 100px, 0);
+    }
+    90% {
+        clip: rect(5px, 9999px, 6px, 0);
+    }
+    95% {
+        clip: rect(49px, 9999px, 57px, 0);
+    }
+    100% {
+        clip: rect(54px, 9999px, 90px, 0);
+    }
+}
